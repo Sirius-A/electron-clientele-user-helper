@@ -7,6 +7,7 @@ import { app, Menu } from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
 import createWindow from './helpers/window';
+import settings from './helpers/settings';
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
@@ -21,6 +22,8 @@ var setApplicationMenu = function () {
     }
     Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
+
+
 
 // Save userData in separate folders for each environment.
 // Thanks to this you can use production and development versions of the app
