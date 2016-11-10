@@ -1,11 +1,11 @@
 {
-  "name": "electron-boilerplate",
-  "productName": "Electron Boilerplate",
+  "name": "electron-clientele-user-helper",
+  "productName": "Clietele ITSM user management helper",
   "description": "Starter for your Electron application",
   "version": "0.0.0",
-  "author": "Mr. Gumby <mr.gumby@example.com>",
-  "copyright": "© 2016, Gumby inc.",
-  "homepage": "http://example.com",
+  "author": "Fabio Zuber",
+  "copyright": "© 2016, Siemens Ltd.",
+  "homepage": "",
   "license": "MIT",
   "main": "background.js",
   "dependencies": {

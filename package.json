@@ -1,7 +1,7 @@
 {
   "build": {
-    "appId": "com.example.electron-boilerplate",
-    "app-category-type": "your.app.category.type",
+    "appId": "com.siemens.electron-clientele-user-helper",
+    "app-category-type": "user management",
     "win": {
       "target": [
         "nsis"
