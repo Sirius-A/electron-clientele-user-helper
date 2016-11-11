@@ -25,7 +25,8 @@ Function Construct-Filter
     }elseif($user -match $GIDRegex){
       $filter = "$filter(siemens-gid=$user)"
     }elseif($user -match $winCredentialsRegex){
-      $filter = "$filter(samaccountname=$user)"
+      $username = $user.Split("\")[1]
+      $filter = "$filter(samaccountname=$username)"
     }else{
       Write-host "Error finding pattern for $user" -ForegroundColor Red
     }
