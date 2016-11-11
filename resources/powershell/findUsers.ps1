@@ -12,7 +12,7 @@ Function Construct-Filter
     [Parameter(Mandatory=$true)]
     [String[]]$users
   )
-  [string]$filter = "(&(objectClass=User)"
+  [string]$filter = "(&(objectClass=User)(| "
 
   $emailRegex = "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
   $GIDRegex = "^[\w\d]*$"
@@ -32,13 +32,13 @@ Function Construct-Filter
     }
   }
 
-  return "$filter)" #Close final bracket and return string
+  return "$filter))" #Close final bracket   and return string
 }
 
-$serachfilter = Construct-Filter $users
+$searchfilter = Construct-Filter $users
 
 $searcher = [adsisearcher]""
-$searcher.filter = $filter
+$searcher.filter = $searchfilter
 $searcher.PropertiesToLoad.addRange(("siemens-gid",
 "displayname",
 "employeetype",
@@ -51,3 +51,4 @@ $searcher.PropertiesToLoad.addRange(("siemens-gid",
 "objectcategory",
 "telephonenumber"
 ))
+$searcher.findAll()
