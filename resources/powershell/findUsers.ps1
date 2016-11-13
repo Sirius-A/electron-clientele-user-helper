@@ -35,11 +35,50 @@ Function Construct-Filter
   return "$filter))" #Close final bracket   and return string
 }
 
-$searchfilter = Construct-Filter $users
+Function Out-XML
+{
+  Param
+  (
+    # List of, e-mail adrsses and GID's
+    [Parameter(Mandatory=$true)]
+    $foundUsers,
+    $filePath = "C:\Temp\Test.xml" # Set the File Name
+  )
 
-$searcher = [adsisearcher]""
-$searcher.filter = $searchfilter
-$searcher.PropertiesToLoad.addRange(("siemens-gid",
+  # Create The Document
+  $XmlWriter = New-Object System.XMl.XmlTextWriter($filePath,$Null)
+
+  # Set The Formatting
+  $xmlWriter.Formatting = "Indented"
+  $xmlWriter.Indentation = "4"
+
+  # Write the XML Decleration
+  $xmlWriter.WriteStartDocument()
+
+  # Write Root Element
+  $xmlWriter.WriteStartElement("People")
+
+  Foreach ($foundUser in $foundUsers)
+  {
+    $xmlWriter.WriteStartElement("Person")
+    foreach ( $UserProperty in $foundUser.Properties.GetEnumerator()){
+      $xmlWriter.WriteElementString($UserProperty.Name,$UserProperty.Value)
+    }
+    $xmlWriter.WriteEndElement() # <-- Closing Person
+  }
+  $xmlWriter.WriteEndElement() # <-- Closing People
+
+  # End the XML Document
+  $xmlWriter.WriteEndDocument()
+
+  # Finish The Document
+  $xmlWriter.Finalize
+  $xmlWriter.Flush()
+  $xmlWriter.Close()
+}
+
+$searchfilter = Construct-Filter $users
+$PropertiesToLoad = @("siemens-gid",
 "displayname",
 "employeetype",
 "department",
@@ -49,6 +88,16 @@ $searcher.PropertiesToLoad.addRange(("siemens-gid",
 "samaccountname",
 "mail",
 "objectcategory",
-"telephonenumber"
-))
-$searcher.findAll()
+"telephonenumber",
+"mobile"
+)
+
+$searcher = [adsisearcher]""
+$searcher.filter = $searchfilter
+$searcher.PropertiesToLoad.addRange($PropertiesToLoad)
+
+$results = $searcher.findAll()
+
+Out-XML $results
+
+return $results
