@@ -1,6 +1,7 @@
 Param(
    [Parameter(Mandatory=$True)]
-   [string[]] $users
+   [string[]] $users,
+   $filePath = "C:/Temp/_ClienteleUserData.xml" # Set the File Name
 )
 
 
@@ -42,7 +43,7 @@ Function Out-XML
     # List of, e-mail adrsses and GID's
     [Parameter(Mandatory=$true)]
     $foundUsers,
-    $filePath = "C:\Temp\Test.xml" # Set the File Name
+    [String]$filePath
   )
 
   # Create The Document
@@ -98,6 +99,6 @@ $searcher.PropertiesToLoad.addRange($PropertiesToLoad)
 
 $results = $searcher.findAll()
 
-Out-XML $results
+Out-XML $results $filePath
 
 return $results
