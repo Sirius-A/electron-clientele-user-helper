@@ -1,9 +1,8 @@
 Param(
    [Parameter(Mandatory=$True)]
    [string[]] $users,
-   $filePath = "./ADUserData.xml" # Set the File Name
+   [String]$filePath = $MyInvocation.MyCommand.Path+"test.xml" # Set the File Name
 )
-
 
 Function Construct-Filter
 {
@@ -45,7 +44,6 @@ Function Out-XML
     $foundUsers,
     [String]$filePath
   )
-
   # Create The Document
   $XmlWriter = New-Object System.XMl.XmlTextWriter($filePath,$Null)
 
@@ -76,6 +74,11 @@ Function Out-XML
   $xmlWriter.Finalize
   $xmlWriter.Flush()
   $xmlWriter.Close()
+}
+
+if($FilePath -NotMatch "\w:[\\|\/]"){
+  $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+  $FilePath = "$scriptPath/$FilePath"
 }
 
 $searchfilter = Construct-Filter $users
