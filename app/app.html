@@ -5,6 +5,7 @@
     <title>Clientele user management helper</title>
 
     <link href="./node_modules/selectize/dist/css/selectize.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/skeleton.css" rel="stylesheet" type="text/css">
     <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
 
     <script src="helpers/context_menu.js"></script>
@@ -16,25 +17,38 @@
 
     <div class="container">
         <h1>Clientele user management helper</h1>
-        <section>
-            <h2>Select users</h2>
-            <input id="select-users"  type="text" placeholder="e-mail addresses go here">
-            <button id="get-user-details">get user details</button>
+        <section about="user selection" class="row">
+            <div class="three columns"><img src="img/user.png" alt="list users" class="section-icon"></div>
+            <div class="nine columns">
+                <h2>Select users</h2>
+                <input id="select-users"  type="text" placeholder="Use ; to seperate users">
+                <button id="get-user-details">get user details</button>
+             </div>
         </section>
-        <section about="group membership">
-            <h2>Attachment group membership</h2>
-            <button id="start-groupmembership-script">Start attachment group membership script</button>
-
+        <section about="group membership" class="row">
+            <div class="three columns"><img src="img/folder-2.png" alt="attachment folder" class="section-icon"></div>
+            <div class="nine columns">
+                <h2>Attachment group membership</h2>
+                <button id="start-groupmembership-script">Start attachment group membership script</button>
+            </div>
         </section>
-        <section about="e-mail">
-            <h2>E-mail notification</h2>
-            <textarea id="mail-text">Default text</textarea>
-            <button id="open-email">Open e-mail</button>
+        <section about="e-mail" class="row">
+            <div class="three columns"><img src="img/message-1.png" alt="send mail" class="section-icon"></div>
+            <div class="nine columns">
+                <h2>E-mail notification</h2>
+                <div class="row">
+                    <textarea id="mail-text" class="u-full-width">Default text</textarea>
+                    <button id="open-email">Open e-mail</button>
+                </div>
+            </div>
         </section>
-
-        <p class="subtitle">
+        <section about="environment Info">
+        <div>
+        <p class="row">
             You are in <strong id="env-name"></strong> environment.
         </p>
+        </div>
+        <section>
     </div>
 
 </body>
