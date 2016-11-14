@@ -15,11 +15,13 @@ cd ./ps-aduser-export-xml
 Click on the "Download ZIP" button on the home page of this repository. Extract the content of the zip anywhere you like.
 
 ## Usage
-The [Script](adUserFinder.ps1) take 2 arguments
+Use Powershell to execute the adUserFinder script.
+The [Script](adUserFinder.ps1) takes 2 arguments:
  * **Users**: List of E-Mail Adresses, GIDs or Domain\User Credentials of the desired users
- * **FilePath**: Path of the export xml file (default = *currentDir/ADUserData.xml*)
+ * **FilePath**: Path of the export xml file (default = *currentDir*/ADUserData.xml)
 
-
-~~~~bash
-./adUserFinder.ps1 -Users fabio.zuber@siemens.com, Z002MKUM, AD001\Z002MKUM
+### Example
+The example below shows 3 different ways to get user details (for the same user). The XML File with the user data will be placed in the current directory.
+~~~~powershell
+./adUserFinder.ps1 -Users fabio.zuber@siemens.com, Z002MKUM, AD001\Z002MKUM -FilePath "./UserExport.xml"
 ~~~~
