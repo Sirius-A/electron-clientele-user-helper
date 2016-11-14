@@ -2,6 +2,7 @@
   "build": {
     "appId": "com.siemens.electron-clientele-user-helper",
     "app-category-type": "user management",
+    "extraResources": "resources/powershell/**/*.ps1",
     "win": {
       "target": [
         "nsis"
