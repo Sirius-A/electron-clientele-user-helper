@@ -1,7 +1,7 @@
 Param(
    [Parameter(Mandatory=$True)]
    [string[]] $users,
-   [String]$filePath = $MyInvocation.MyCommand.Path+"test.xml" # Set the File Name
+   [String]$filePath = "ADUserData.xml" # Set the File Name
 )
 
 Function Construct-Filter
