@@ -9,10 +9,10 @@ The user details are fetched form the Active Directory using a Powershell script
 
 To add users to the attachment group, the tool uses a script from [here](https://code.siemens.com/GS-IT-BT/ps-serverLocaleGrroup-manager). 
 
-# :arrow_down:Download 
+# :arrow_down: Download 
 You can find all releases [here](NO_RELEASES_YET)
 
-# :zap:Developer quick start
+# :zap: Developer quick start
 The only development dependency of this project is [Node.js](https://nodejs.org). So just make sure you have it installed.
 Then type few commands known to every Node developer...
 ~~~bash
@@ -23,11 +23,11 @@ npm start
 ~~~
 ... and boom! You have a running desktop application on your screen :sparkles:.
 
-# :memo:Structure of the project
+# :memo: Structure of the project
 This app is built on [Electron](http://electron.atom.io/) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a starting point. 
 Below is some information on how to the whole setup works. (All info is from the  [electron-boilerplate](https://github.com/szwacz/electron-boilerplate)).
 
-## :package:Declaring dependencies
+## :package: Declaring dependencies
 
 There are **two** `package.json` files:
 
@@ -49,7 +49,7 @@ Sits on path: `electron-boilerplate/app/package.json`. This is **real** manifest
 1. Native npm modules (those written in C, not JavaScript) need to be compiled, and here we have two different compilation targets for them. Those used in application need to be compiled against electron runtime, and all `devDependencies` need to be compiled against your locally installed node.js. Thanks to having two files this is trivial.
 2. When you package the app for distribution there is no need to add up to size of the app with your `devDependencies`. Here those are always not included (reside outside the `app` directory).
 
-## :file_folder:Folders for application code
+## :file_folder: Folders for application code
 
 The application is split between two main folders...
 
@@ -63,7 +63,7 @@ Treat `src` and `app` folders like two halves of one bigger thing.
 
 The drawback of this design is that `app` folder contains some files which should be git-ignored and some which shouldn't (see `.gitignore` file). But thanks to this two-folders split development builds are much (much!) faster.
 
-# :wrench:Development
+# :wrench: Development
 
 ### Installation
 
@@ -100,7 +100,7 @@ But use CommonJS syntax in `app` folder. So the code from above should look as f
 var myStuff = require('./my_lib/my_stuff');
 ```
 
-# :white_check_mark:Testing
+# :white_check_mark: Testing
 
 ### Unit tests
 
@@ -126,7 +126,7 @@ npm run coverage
 ```
 You can set the reporter(s) by setting `ISTANBUL_REPORTERS` environment variable (defaults to `text-summary` and `html`). The report directory can be set with `ISTANBUL_REPORT_DIR` (defaults to `coverage`).
 
-# :rocket:Making a release
+# :rocket: Making a release
 
 To package the app into an installer use command:
 ```
