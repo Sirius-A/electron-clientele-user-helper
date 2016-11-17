@@ -1,26 +1,33 @@
-electron-boilerplate
-==============
+:busts_in_silhouette: Electron user helper for Clientele ITSM 
+=======================================
+A cross-platform application, that makes creating Clietele ITSM users a piece of :cake:! 
+# :page_facing_up:Overview
+List the users that you want to create/update and the tool will create an XML that can be imported within Clietele. 
+The tool  accepts GID, e-mail and domain\\account in the user list.
 
-[![Build Status](https://travis-ci.org/szwacz/electron-boilerplate.svg?branch=master)](https://travis-ci.org/szwacz/electron-boilerplate) [![Build status](https://ci.appveyor.com/api/projects/status/s9htc1k5ojkn08fr?svg=true)](https://ci.appveyor.com/project/szwacz/electron-boilerplate)
+The user details are fetched form the Active Directory using a Powershell script. See [this Repo](https://code.siemens.com/GS-IT-BT/ps-ADUser-export-XML) for details.
 
-A minimalistic yet comprehensive boilerplate application for [Electron runtime](http://electron.atom.io). Tested on OSX, Windows and Linux.  
+To add users to the attachment group, the tool uses a script from [here](https://code.siemens.com/GS-IT-BT/ps-serverLocaleGrroup-manager). 
 
-This project does not impose on you any framework (like Angular or React). Instead, it tries to give you only the 'electron' part of technology stack so you can pick your favorite tools for the rest.
+# :arrow_down: Download 
+You can find all releases [here](NO_RELEASES_YET)
 
-# Quick start
+# :zap: Developer quick start
 The only development dependency of this project is [Node.js](https://nodejs.org). So just make sure you have it installed.
 Then type few commands known to every Node developer...
-```
-git clone https://github.com/szwacz/electron-boilerplate.git
-cd electron-boilerplate
+~~~bash
+git clone https://github.com/Sirius-A/electron-clientele-user-helper
+cd electron-clientele-user-helper
 npm install
 npm start
-```
-... and boom! You have a running desktop application on your screen.
+~~~
+... and boom! You have a running desktop application on your screen :sparkles:.
 
-# Structure of the project
+# :memo: Structure of the project
+This app is built on [Electron](http://electron.atom.io/) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a starting point. 
+Below is some information on how to the whole setup works. (All info is from the  [electron-boilerplate](https://github.com/szwacz/electron-boilerplate)).
 
-## Declaring dependencies
+## :package: Declaring dependencies
 
 There are **two** `package.json` files:
 
@@ -42,7 +49,7 @@ Sits on path: `electron-boilerplate/app/package.json`. This is **real** manifest
 1. Native npm modules (those written in C, not JavaScript) need to be compiled, and here we have two different compilation targets for them. Those used in application need to be compiled against electron runtime, and all `devDependencies` need to be compiled against your locally installed node.js. Thanks to having two files this is trivial.
 2. When you package the app for distribution there is no need to add up to size of the app with your `devDependencies`. Here those are always not included (reside outside the `app` directory).
 
-## Folders for application code
+## :file_folder: Folders for application code
 
 The application is split between two main folders...
 
@@ -56,7 +63,7 @@ Treat `src` and `app` folders like two halves of one bigger thing.
 
 The drawback of this design is that `app` folder contains some files which should be git-ignored and some which shouldn't (see `.gitignore` file). But thanks to this two-folders split development builds are much (much!) faster.
 
-# Development
+# :wrench: Development
 
 ### Installation
 
@@ -93,7 +100,7 @@ But use CommonJS syntax in `app` folder. So the code from above should look as f
 var myStuff = require('./my_lib/my_stuff');
 ```
 
-# Testing
+# :white_check_mark: Testing
 
 ### Unit tests
 
@@ -119,13 +126,9 @@ npm run coverage
 ```
 You can set the reporter(s) by setting `ISTANBUL_REPORTERS` environment variable (defaults to `text-summary` and `html`). The report directory can be set with `ISTANBUL_REPORT_DIR` (defaults to `coverage`).
 
-### Continuous integration
+# :rocket: Making a release
 
-Electron [can be plugged](https://github.com/atom/electron/blob/master/docs/tutorial/testing-on-headless-ci.md) into CI systems. Here two CIs are preconfigured for you. [Travis CI](https://travis-ci.org/) covers testing on OSX and Linux and [App Veyor](https://www.appveyor.com) on Windows.
-
-# Making a release
-
-To package your app into an installer use command:
+To package the app into an installer use command:
 ```
 npm run release
 ```
@@ -135,8 +138,3 @@ You can create Windows installer only when running on Windows, the same is true 
 
 All packaging actions are handled by [electron-builder](https://github.com/electron-userland/electron-builder). See docs of this tool if you want to customize something.
 
-**Note:** There are various icons and bitmap files in `resources` directory. Those are used in installers and intended to be replaced by your own graphics.
-
-# License
-
-Released under the MIT license.
