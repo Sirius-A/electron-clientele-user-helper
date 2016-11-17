@@ -1,5 +1,4 @@
 // Use new ES6 modules syntax for everything.
-
 import { remote } from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
 import $ from "jquery";
@@ -74,7 +73,7 @@ function startGroupMembershipScript() {
 }
 
 function getUserDetails() {
-    var userlist = document.getElementById("select-users").value;
+    var userList = document.getElementById("select-users").value;
 
     var psADFinderPath = app.getAppPath();
     //Correct path for dev environment
@@ -87,10 +86,10 @@ function getUserDetails() {
     var exportFilePath = settings.getSync("findUser.exportFilePath"); //Use the non async method to grantee that exportFilePath is filled
 
     console.log(psADFinderPath);
-    console.log(userlist);
+    console.log(userList);
     console.log(exportFilePath);
 
-    startFindUserScript(psADFinderPath,userlist,exportFilePath);
+    startFindUserScript(psADFinderPath,userList,exportFilePath);
 
     function startFindUserScript(psADFinderPath, userList, exportFilePath) {
         var executionFile= "powershell.exe -ExecutionPolicy Bypass " + psADFinderPath;
