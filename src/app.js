@@ -1,12 +1,12 @@
 // Use new ES6 modules syntax for everything.
 
-import os from 'os'; // native node.js module
 import { remote } from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
 import $ from "jquery";
 import selectize from 'selectize'; // module loaded from npm
 import env from './env';
 import child_process from "child_process";
+import settings from "./helpers/settings";
 
 console.log('Loaded environment variables:', env);
 var app = remote.app;
@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
     Array.from(buttons).forEach(button => {
         button.addEventListener('click', buttonHandler);
     });
+
+    settings.get().then(val => {
+        console.log(val);
+    });
+
 });
 
 function buttonHandler(event){

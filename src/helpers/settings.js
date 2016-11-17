@@ -1,9 +1,15 @@
 import settings from "electron-settings";
-export default function (name, options) {
 
-    settings.defaults({
-        groupManagerRootPath: 'C:/Temp/',
-        userDetailsExportPath: "C:/Users/Z002MKUM/Desktop/"
-    });
+settings.defaults({
+    "email":{
+        "subject": "Access to clientele ITSM ePortal",
+        "text": "Lorem ipsum dolor sit amet."
+    },
+    "findUser":{
+        "exportFilePath": "C:/Temp/_UserData.xml"
+    }
+});
 
-}
+settings.applyDefaults();
+
+export * from "electron-settings";
