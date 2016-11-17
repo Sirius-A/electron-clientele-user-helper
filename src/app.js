@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#select-users').selectize({
         plugins: ['remove_button','restore_on_backspace'],
-        delimiter: ';',
+        delimiter: ',',
         persist: false,
         create: function(input) {
             return {
@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function buttonHandler(event){
     switch(event.target.id){
         case('get-user-details'):
-            //TODO ps script to get user details from AD
+            getUserDetails();
             break;
         case('start-groupmembership-script'):
-            startGroupMembership();
+            startGroupMembershipScript();
             //TODO start powershell process with group manager tool
             break;
         case('open-email'):
@@ -58,7 +58,7 @@ function buttonHandler(event){
     }
 }
 
-function startGroupMembership() {
+function startGroupMembershipScript() {
     var spawn =  child_process.spawn,child;
     child = spawn("powershell.exe",["powershell.exe -ExecutionPolicy Bypass c:\\temp\\test.ps1"]);
     child.stdout.on("data",function(data){
@@ -71,6 +71,33 @@ function startGroupMembership() {
         console.log("Powershell Script finished");
     });
     child.stdin.end(); //end input
+}
+
+function getUserDetails() {
+    var userlist = document.getElementById("select-users").value;
+
+    var psADFinderPath = app.getAppPath();
+    //Correct path for dev environment
+    if (env.name == "development") {
+    psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
+    }
+
+    psADFinderPath = psADFinderPath+"\\resources\\powershell\\ps-aduser-export-xml\\adUserFinder.ps1";
+    console.log(psADFinderPath);
+    /*
+    var spawn =  child_process.spawn,child;
+    child = spawn("powershell.exe",["powershell.exe -ExecutionPolicy Bypass"+getAppPath]);
+    child.stdout.on("data",function(data){
+        console.log("Powershell Data: " + data);
+    });
+    child.stderr.on("data",function(data){
+        console.log("Powershell Errors: " + data);
+    });
+    child.on("exit",function(){
+        console.log("Powershell Script finished");
+    });
+    child.stdin.end(); //end input
+    */
 }
 
 
