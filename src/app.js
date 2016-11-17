@@ -79,25 +79,39 @@ function getUserDetails() {
     var psADFinderPath = app.getAppPath();
     //Correct path for dev environment
     if (env.name == "development") {
-    psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
+        psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
     }
 
     psADFinderPath = psADFinderPath+"\\resources\\powershell\\ps-aduser-export-xml\\adUserFinder.ps1";
+
+    var exportFilePath = settings.getSync("findUser.exportFilePath"); //Use the non async method to grantee that exportFilePath is filled
+
     console.log(psADFinderPath);
-    /*
-    var spawn =  child_process.spawn,child;
-    child = spawn("powershell.exe",["powershell.exe -ExecutionPolicy Bypass"+getAppPath]);
-    child.stdout.on("data",function(data){
-        console.log("Powershell Data: " + data);
-    });
-    child.stderr.on("data",function(data){
-        console.log("Powershell Errors: " + data);
-    });
-    child.on("exit",function(){
-        console.log("Powershell Script finished");
-    });
-    child.stdin.end(); //end input
-    */
+    console.log(userlist);
+    console.log(exportFilePath);
+
+    startFindUserScript(psADFinderPath,userlist,exportFilePath);
+
+    function startFindUserScript(psADFinderPath, userList, exportFilePath) {
+        var executionFile= "powershell.exe -ExecutionPolicy Bypass " + psADFinderPath;
+        var executionArguments = " -Users " + userList + " -FilePath " + exportFilePath;
+
+        console.log(executionFile + executionArguments);
+
+        var spawn = child_process.spawn, child;
+        child = spawn("powershell.exe", [executionFile + executionArguments]);
+        child.stdout.on("data", function (data) {
+            console.log("Powershell Data: " + data);
+        });
+        child.stderr.on("data", function (data) {
+            console.log("Powershell Errors: " + data);
+        });
+        child.on("exit", function () {
+            console.log("Powershell Script finished");
+        });
+        child.stdin.end(); //end input
+    }
+
 }
 
 
