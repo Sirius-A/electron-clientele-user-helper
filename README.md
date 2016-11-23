@@ -1,15 +1,15 @@
-:busts_in_silhouette: Electron user helper for Clientele ITSM 
+:busts_in_silhouette: Electron user helper for Clientele ITSM
 =======================================
-A cross-platform application, that makes creating Clietele ITSM users a piece of :cake:! 
-# :page_facing_up:Overview
-List the users that you want to create/update and the tool will create an XML that can be imported within Clietele. 
+A cross-platform application, that makes creating Clietele ITSM users a piece of :cake:!
+# :page_facing_up: Overview
+List the users that you want to create/update and the tool will create an XML that can be imported within Clietele.
 The tool  accepts GID, e-mail and domain\\account in the user list.
 
 The user details are fetched form the Active Directory using a Powershell script. See [this Repo](https://code.siemens.com/GS-IT-BT/ps-ADUser-export-XML) for details.
 
-To add users to the attachment group, the tool uses a script from [here](https://code.siemens.com/GS-IT-BT/ps-serverLocaleGrroup-manager). 
+To add users to the attachment group, the tool uses a script from [here](https://code.siemens.com/GS-IT-BT/ps-serverLocaleGrroup-manager).
 
-# :arrow_down: Download 
+# :arrow_down: Download
 You can find all releases [here](NO_RELEASES_YET)
 
 # :zap: Developer quick start
@@ -24,7 +24,7 @@ npm start
 ... and boom! You have a running desktop application on your screen :sparkles:.
 
 # :memo: Structure of the project
-This app is built on [Electron](http://electron.atom.io/) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a starting point. 
+This app is built on [Electron](http://electron.atom.io/) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a starting point.
 Below is some information on how to the whole setup works. (All info is from the  [electron-boilerplate](https://github.com/szwacz/electron-boilerplate)).
 
 ## :package: Declaring dependencies
@@ -86,6 +86,8 @@ cd app
 npm install name_of_npm_module --save
 ```
 
+**Note:** if the module you want to install is a native one (not pure JavaScript but compiled C code or something) you should run `npm run postinstall` command **after** `npm install name_of_npm_module` to rebuild the module for Electron. This needs to be done only once when you're first time installing the module. Later on postinstall script will fire automatically with every `npm install`.
+
 ### Working with modules
 
 Thanks to [rollup](https://github.com/rollup/rollup) you can (and should) use ES6 modules for all code in `src` folder. But because ES6 modules still aren't natively supported you can't use them in the `app` folder.
@@ -136,5 +138,8 @@ It will start the packaging process for operating system you are running this co
 
 You can create Windows installer only when running on Windows, the same is true for Linux and OSX. So to generate all three installers you need all three operating systems.
 
-All packaging actions are handled by [electron-builder](https://github.com/electron-userland/electron-builder). See docs of this tool if you want to customize something.
+All packaging actions are handled by [electron-builder](https://github.com/electron-userland/electron-builder). It has a lot of [customization options](https://github.com/electron-userland/electron-builder/wiki/Options), which you can declare under ["build" key in package.json file](https://github.com/szwacz/electron-boilerplate/blob/master/package.json#L2).
 
+# License
+
+Released under the MIT license.
