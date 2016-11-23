@@ -72,6 +72,13 @@ function startGroupMembershipScript() {
     child.stdin.end(); //end input
 }
 
+function createTextElement(content, className) {
+    var newLogEntry = document.createElement('p');
+    newLogEntry.innerHTML = content;
+    newLogEntry.className = className;
+    return newLogEntry;
+}
+
 function getUserDetails() {
     var userList = document.getElementById("select-users").value;
 
@@ -104,6 +111,9 @@ function getUserDetails() {
         });
         child.stderr.on("data", function (data) {
             console.log("Powershell Errors: " + data);
+
+            var newLogEntry = createTextElement("log-error", className);
+            document.getElementById("get-user-details-log").appendChild(newLogEntry);
         });
         child.on("exit", function () {
             console.log("Powershell Script finished");
