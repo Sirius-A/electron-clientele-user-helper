@@ -87,7 +87,10 @@ function getUserDetails() {
     if (env.name == "development") {
         psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
     }
+
     document.getElementById("get-user-details").className += "processing";
+    document.getElementById("get-user-details").disabled = true;
+
     psADFinderPath = psADFinderPath+"\\resources\\powershell\\ps-aduser-export-xml\\adUserFinder.ps1";
 
     var exportFilePath = settings.getSync("findUser.exportFilePath"); //Use the non async method to grantee that exportFilePath is filled
