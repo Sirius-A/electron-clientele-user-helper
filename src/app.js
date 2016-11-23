@@ -88,20 +88,25 @@ function getUserDetails() {
         psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
     }
 
-    document.getElementById("get-user-details").className += "processing";
-    document.getElementById("get-user-details").disabled = true;
+    var getUserDetailsButton = document.getElementById("get-user-details");
+
+    //TODO: Refactor this (-->UI handling function)
+    getUserDetailsButton.className += "processing";
+    getUserDetailsButton.disabled = true;
 
     psADFinderPath = psADFinderPath+"\\resources\\powershell\\ps-aduser-export-xml\\adUserFinder.ps1";
 
     var exportFilePath = settings.getSync("findUser.exportFilePath"); //Use the non async method to grantee that exportFilePath is filled
 
-    console.log(psADFinderPath);
-    console.log(userList);
-    console.log(exportFilePath);
+    var unlockButton = function () {
+        var getUserDetailsButton = document.getElementById("get-user-details");
+        getUserDetailsButton.disabled = false;
+        getUserDetailsButton.classList.remove("processing");
+    };
 
-    startFindUserScript(psADFinderPath,userList,exportFilePath);
+    startFindUserScript(psADFinderPath,userList,exportFilePath,unlockButton);
 
-    function startFindUserScript(psADFinderPath, userList, exportFilePath) {
+   function startFindUserScript(psADFinderPath, userList, exportFilePath, callback) {
         var executionFile= "powershell.exe -ExecutionPolicy Bypass " + psADFinderPath;
         var executionArguments = " -Users " + userList + " -FilePath " + exportFilePath;
 
@@ -120,8 +125,10 @@ function getUserDetails() {
         });
         child.on("exit", function () {
             console.log("Powershell Script finished");
+            callback();
         });
         child.stdin.end(); //end input
+
     }
 
 }
