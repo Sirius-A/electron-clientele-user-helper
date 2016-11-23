@@ -72,7 +72,7 @@ function startGroupMembershipScript() {
     child.stdin.end(); //end input
 }
 
-function createTextElement(content, className) {
+function createTextElement(className, content) {
     var newLogEntry = document.createElement('p');
     newLogEntry.innerHTML = content;
     newLogEntry.className = className;
@@ -87,7 +87,7 @@ function getUserDetails() {
     if (env.name == "development") {
         psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
     }
-
+    document.getElementById("get-user-details").className += "processing";
     psADFinderPath = psADFinderPath+"\\resources\\powershell\\ps-aduser-export-xml\\adUserFinder.ps1";
 
     var exportFilePath = settings.getSync("findUser.exportFilePath"); //Use the non async method to grantee that exportFilePath is filled
@@ -112,7 +112,7 @@ function getUserDetails() {
         child.stderr.on("data", function (data) {
             console.log("Powershell Errors: " + data);
 
-            var newLogEntry = createTextElement("log-error", className);
+            var newLogEntry = createTextElement("log-error", data);
             document.getElementById("get-user-details-log").appendChild(newLogEntry);
         });
         child.on("exit", function () {
