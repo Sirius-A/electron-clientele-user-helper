@@ -88,6 +88,8 @@ function getUserDetails() {
         psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
     }
 
+    $('#get-user-details-log').parent().toggleClass('hidden');
+
     var getUserDetailsButton = document.getElementById("get-user-details");
 
     //TODO: Refactor this (-->UI handling function)

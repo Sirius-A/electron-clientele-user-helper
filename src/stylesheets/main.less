@@ -12,6 +12,7 @@ a {
 .container {
     text-align: left;
 }
+
 section{
     border-top: 1px solid #eee;
     padding: 4rem 0;
@@ -35,9 +36,12 @@ section{
 *:disabled{
     cursor: not-allowed;
     pointer-events: none;
-
     color: darkslategrey;
     background-color: #f1f1f1;
+}
+
+.hidden {
+    display: none;
 }
 
 .processing {
@@ -48,7 +52,6 @@ section{
     }
 
     @keyframes dots{
-
         0%, 20% {
             color: rgba(255, 255, 255, 0);
             text-shadow: .25em 0 0 rgba(255, 255, 255, 0), .5em 0 0 rgba(255, 255, 255, 0);
