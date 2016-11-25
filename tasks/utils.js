@@ -1,6 +1,6 @@
 'use strict';
 
-var argv = require('minimist')(process.argv);
+var argv = require('yargs').argv;
 
 exports.getEnvName = function () {
     return argv.env || 'development';
