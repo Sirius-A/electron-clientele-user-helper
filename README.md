@@ -1,6 +1,6 @@
 :busts_in_silhouette: Electron user helper for Clientele ITSM
 =======================================
-A cross-platform application, that makes creating Clietele ITSM users a piece of :cake:!
+A cross-platform application that makes creating Clietele ITSM users a piece of :cake:!
 # :page_facing_up: Overview
 List the users that you want to create/update and the tool will create an XML that can be imported within Clietele.
 The tool  accepts GID, e-mail and domain\\account in the user list.
