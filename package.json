@@ -1,16 +1,16 @@
 {
   "name": "electron-clientele-user-helper",
   "productName": "Clietele ITSM user management helper",
-  "description": "Starter for your Electron application",
+  "description": "Making clientele user creation a piece of cake",
   "version": "0.0.0",
   "author": "Fabio Zuber",
   "copyright": "© 2016, Siemens Ltd.",
   "homepage": "",
   "license": "MIT",
-  "main": "background.js",
+  "main": "app/background.js",
   "build": {
     "appId": "com.siemens.electron-clientele-user-helper",
-    "extraResources": "resources/powershell/**/*.ps1"
+    "extraResources": "resources/powershell/**/*.ps1",
     "files": [
       "app/**/*",
       "node_modules/**/*",
