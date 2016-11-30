@@ -1,6 +1,6 @@
 :busts_in_silhouette: Electron user helper for Clientele ITSM
 =======================================
-A cross-platform application that makes creating Clietele ITSM users a piece of :cake:!
+A cross-platform application that makes creating Clientele ITSM users a piece of :cake:!
 # :page_facing_up: Overview
 List the users that you want to create/update and the tool will create an XML that can be imported within Clietele.
 The tool  accepts GID, e-mail and domain\\account in the user list.
@@ -25,31 +25,6 @@ npm start
 
 # :memo: Structure of the project
 This app is built on [Electron](http://electron.atom.io/) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a starting point.
-Below is some information on how to the whole setup works. (All info is from the  [electron-boilerplate](https://github.com/szwacz/electron-boilerplate)).
-
-## :package: Declaring dependencies
-
-There are **two** `package.json` files:
-
-#### 1. `package.json` for development
-Sits on path: `electron-boilerplate/package.json`. This is where you should declare dependencies for your development environment and build scripts. **This file is not distributed with real application!**
-
-It's also the place to specify the Electron runtime version you want to use:
-```json
-"devDependencies": {
-  "electron": "1.3.3"
-}
-```
-Note: [Electron authors advise](http://electron.atom.io/docs/tutorial/electron-versioning/) to use fixed version here.
-
-#### 2. `package.json` for your application
-Sits on path: `electron-boilerplate/app/package.json`. This is **real** manifest of your application. Declare your app dependencies here.
-
-#### OMG, but seriously why there are two `package.json`?
-1. Native npm modules (those written in C, not JavaScript) need to be compiled, and here we have two different compilation targets for them. Those used in application need to be compiled against electron runtime, and all `devDependencies` need to be compiled against your locally installed node.js. Thanks to having two files this is trivial.
-2. When you package the app for distribution there is no need to add up to size of the app with your `devDependencies`. Here those are always not included (reside outside the `app` directory).
-
-## :file_folder: Folders for application code
 
 The application is split between two main folders...
 
