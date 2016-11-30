@@ -1,10 +1,10 @@
 {
-  "name": "electron-clientele-user-helper",
-  "productName": "Clietele ITSM user management helper",
+  "name": "electron-clientele-user-creator",
+  "productName": "Clientele ITSM user creator",
   "description": "Making clientele user creation a piece of cake",
   "version": "0.0.0",
   "author": "Fabio Zuber",
-  "copyright": "© 2016, Siemens Ltd.",
+  "copyright": "© 2016, Fabio Zuber - Siemens Ltd.",
   "homepage": "",
   "license": "MIT",
   "main": "app/background.js",

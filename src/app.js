@@ -11,7 +11,6 @@ console.log('Loaded environment variables:', env);
 var app = remote.app;
 var appDir = jetpack.cwd(app.getAppPath());
 
-
 console.log('The author of this app is:', appDir.read('package.json', 'json').author);
 
 document.addEventListener('DOMContentLoaded', function () {
