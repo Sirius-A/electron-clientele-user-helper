@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "electron": "1.3.3",
-    "electron-builder": "^5.12.1",
+    "electron": "^1.4.7",
+    "electron-builder": "^8.6.0",
     "electron-mocha": "^3.0.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
@@ -43,11 +43,11 @@
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.5",
     "istanbul": "^0.4.3",
+    "minimist": "^1.2.0",
     "mocha": "^3.0.2",
-    "rollup": "^0.34.7",
+    "rollup": "^0.36.3",
     "rollup-plugin-istanbul": "^1.1.0",
     "source-map-support": "^0.4.2",
-    "spectron": "^3.3.0",
-    "yargs": "^4.2.0"
+    "spectron": "^3.3.0"
   }
 }
