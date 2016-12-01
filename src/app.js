@@ -82,10 +82,6 @@ function getUserDetails() {
     var userList = document.getElementById("select-users").value;
 
     var psADFinderPath = app.getAppPath();
-    //Correct path for dev environment
-    if (env.name == "development") {
-        psADFinderPath = psADFinderPath.substring(0, psADFinderPath.length - 4);
-    }
 
     $('#get-user-details-log').parent().toggleClass('hidden');
 
@@ -133,5 +129,3 @@ function getUserDetails() {
     }
 
 }
-
-
