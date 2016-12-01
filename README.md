@@ -1,6 +1,7 @@
 [![](https://img.shields.io/badge/license-Siemens%20Inner%20Source-blue.svg)](LICENSE.md)
 
-# Powershell Active Directory User Export
+Powershell Active Directory User Export
+========================================
 
 ## Download
 
@@ -9,6 +10,11 @@ If you have Git installed, you can get the content of this repo by using git clo
 ~~~~bash
 git clone git@code.siemens.com:gs-it-bt/ps-aduser-export-xml.git
 cd ./ps-aduser-export-xml
+~~~~
+
+After a new version of the tool has been released, simply use git pull to get the new version
+~~~~bash
+git pull origin master
 ~~~~
 
 ### Manual Download
@@ -22,6 +28,12 @@ The [Script](adUserFinder.ps1) takes 2 arguments:
 
 ### Example
 The example below shows 3 different ways to get user details (for the same user). The XML File with the user data will be placed in the current directory.
-~~~~powershell
-./adUserFinder.ps1 -Users fabio.zuber@siemens.com, Z002MKUM, AD001\Z002MKUM -FilePath "./UserExport.xml"
+~~~~Powershell
+./adUserFinder.ps1 -Users fabio.zuber@siemens.com, Z002MKUM, AD001\Z002MKUM -FilePath C:\Temp\_UserData.xml
+~~~~
+
+### Help
+More help can be found in the man page:
+~~~~Powershell
+Get-Help .\adUserFinder.ps1 -Detailed
 ~~~~
