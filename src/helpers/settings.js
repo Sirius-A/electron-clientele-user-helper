@@ -7,7 +7,8 @@ settings.defaults({
     },
     "findUser":{
         "exportFilePath": "C:/Temp/_UserData.xml"
-    }
+    },
+    "RichClientExePath":"C:/Program Files (x86)/Mproof/Clientele ITSM 2010/Client/Clientele.Loader.exe"
 });
 
 settings.applyDefaults();
