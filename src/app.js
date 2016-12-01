@@ -81,6 +81,10 @@ function createTextElement(className, content) {
 function getUserDetails() {
     var userList = document.getElementById("select-users").value;
 
+    if( !userList ){
+      alert("please specify users!");
+      return
+    }
     var psADFinderPath = app.getAppPath();
 
     $('#get-user-details-log').parent().toggleClass('hidden');
@@ -104,7 +108,10 @@ function getUserDetails() {
     startFindUserScript(psADFinderPath,userList,exportFilePath,unlockButton);
 
    function startFindUserScript(psADFinderPath, userList, exportFilePath, callback) {
-        var executionFile= "powershell.exe -ExecutionPolicy Bypass " + psADFinderPath;
+
+        //TODO: make string into @() array 
+
+        var executionFile = "powershell.exe -ExecutionPolicy Bypass " + psADFinderPath;
         var executionArguments = " -Users " + userList + " -FilePath " + exportFilePath;
 
         console.log(executionFile + executionArguments);
@@ -113,6 +120,7 @@ function getUserDetails() {
         child = spawn("powershell.exe", [executionFile + executionArguments]);
         child.stdout.on("data", function (data) {
             console.log("Powershell Data: " + data);
+
         });
         child.stderr.on("data", function (data) {
             console.log("Powershell Errors: " + data);
