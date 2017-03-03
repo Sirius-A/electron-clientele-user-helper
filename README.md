@@ -1,5 +1,7 @@
 :busts_in_silhouette: Electron user helper for Clientele ITSM
 =======================================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Sirius-A/electron-clientele-user-helper.svg)](https://greenkeeper.io/)
 A cross-platform application that makes creating Clientele ITSM users a piece of :cake:!
 # :page_facing_up: Overview
 List the users that you want to create/update and the tool will create an XML that can be imported within Clietele.
